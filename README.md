@@ -1,5 +1,7 @@
 Create a Docker image on Arduino UNO Q that runs an object detection model using LiteRT.
 The hardware setup consists of a Webcam connected to the Arduino UNO Q board using a USB Hub.
+Fundamental ideas on AI model output tensor, LiteRT runtime, MQTT and Docker are discussed in 
+Doulos course on [Edge AI for Embedded Developers](https://www.doulos.com/training/ai-and-deep-learning/deep-learning/essential-edge-ai-for-embedded-developers/)
 
 Step 1:
 Clone the repository on Arduino UNO Q
@@ -59,3 +61,5 @@ Inference published to MQTT topic
 
 Step 6:
 Change the MQTT topic name in the application code (object-detection.py) and subscribe to the topic on another computer to view the output from the object detection model. 
+
+Step 7: Experiment with different LiteRT object detection models such as the [EfficientDet](https://www.kaggle.com/models/tensorflow/efficientdet/tfLite) 
