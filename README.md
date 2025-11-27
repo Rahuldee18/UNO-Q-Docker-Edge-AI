@@ -1,12 +1,26 @@
 Create a Docker image on Arduino UNO Q that runs an object detection model using LiteRT.
-The hardware setup consists of a Webcam connected to the board using a USB Hub.
+The hardware setup consists of a Webcam connected to the Arduino UNO Q board using a USB Hub.
 
 Step 1:
-Clone the repository in a folder on UNO Q such as camera-project. 
+Clone the repository on Arduino UNO Q
+
+```bash
+$git clone https://github.com/Rahuldee18/UNO-Q-Docker-Edge-AI
+Cloning into 'UNO-Q-Docker-Edge-AI'...
+```
+Cloning will create a new folder called UNO-Q-Docker-Edge-AI
+
+Now, copy the contents of this downloaded folder to a folder called camera-project
+
+```bash
+$arduino@Rahul-Q:~/UNO-Q-Docker-Edge-AI$ cp -r /home/arduino/UNO-Q-Docker-Edge-AI/ /home/arduino/camera-project
+```
 
 
 Step 2:
-Create Docker image using build. The image is built locally on Arduino UNO Q and takes about 2 minutes
+Create Docker image using build. Docker is preinstalled on the Arduino UNO Q. 
+The image is built locally on Arduino UNO Q and takes about 2 minutes.
+Change to the camera-project directory and issue the build command.
 
 ```bash
 $sudo docker build -t camera-project 
