@@ -9,14 +9,8 @@ broker_address = "test.mosquitto.org"
 # In case "test.mosquitto.org" is not working, use the broker from HiveMQ mentioned below
 #broker_address = "broker.hivemq.com"
 
-#Create new client instance
+#Create new MQTT client instance
 client = mqtt.Client()
-
-#Attach connect to callback function
-#client.on_connect = on_connect
-
-#Attach message received to callback function
-#client.on_message = on_message
 
 #Connect to broker. Broker can be located on edge or cloud
 client.connect(broker_address)
@@ -31,21 +25,13 @@ label2string = load_labels('src/coco_labels.txt')
 
 def detect_from_image():
     cap = cv2.VideoCapture('/dev/video0', cv2.CAP_V4L)
-    #cap.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter_fourcc('M', 'J', 'P', 'G'))
-
     
-    #cap.set(cv2.CAP_PROP_FRAME_WIDTH, 2560)
-    #ccap.set(cv2.CAP_PROP_FRAME_HEIGHT, 1440)
     success, img_org = cap.read()
     #     if not success:
     #        sys.exit('ERROR: Unable to read from webcam. Please verify your webcam settings.')
 
     # prepare input image
     start = time.time()
-    #img_org = cv2.imread('/content/Object-Detection/Images/dog.jpg')
-    #img_org = cv2.imread('src/apple.jpeg')
-    #img_org = cv2.imread('/content/Object-Detection/photo.jpg')
-    #cv2_imshow(img_org)
     img = cv2.cvtColor(img_org, cv2.COLOR_BGR2RGB)
     img = cv2.resize(img, (300, 300))
     img = img.reshape(1, img.shape[0], img.shape[1],
@@ -65,11 +51,11 @@ def detect_from_image():
     # set input tensor
     interpreter.set_tensor(input_details[0]['index'], img)
 
-    # run
+    # execute model graph using LiteRT
     interpreter.invoke()
 
 
-    # get output tensor
+    # get output tensor details
     boxes = interpreter.get_tensor(output_details[0]['index'])
     boxes_shape = output_details[0]['shape_signature']
     labels = interpreter.get_tensor(output_details[1]['index'])
