@@ -21,8 +21,8 @@ $arduino@Rahul-Q:~/UNO-Q-Docker-Edge-AI$ cp -r /home/arduino/UNO-Q-Docker-Edge-A
 
 Step 2:
 Create Docker image using build. Docker is preinstalled on the Arduino UNO Q. 
-The image is built locally on Arduino UNO Q and takes about 2 minutes.
-Change to the camera-project directory and issue the build command.
+- The image is built locally on Arduino UNO Q and takes about 2 minutes.
+- Change to the camera-project directory and issue the build command.
 
 ```bash
 $sudo docker build -t camera-project 
@@ -46,9 +46,9 @@ $docker run --privileged -v /dev/video0:/dev/video0 camera-project &
 ```
 
 Step 5:
-Observe the output from the application. The output is a MQTT payload consisting of object label, confidence score and bounding box coordinates.
-
-Sample output with camera pointing at a person. 
+Observe the output from the application. 
+- The output is a MQTT payload consisting of object label, confidence score and bounding box coordinates.
+- Sample output with camera pointing at a person. 
 
 ```bash
 
@@ -60,7 +60,8 @@ Inference published to MQTT topic
 ```
 
 Step 6:
-Change the MQTT topic name in the application code (object-detection.py) and subscribe to the topic on another computer to view the output from the object detection model. 
-Also, try updating the code to give continuous inference.  Right now, it is setup to provide only one inference at start. 
+
+- Change the MQTT topic name in the application code (object-detection.py) and subscribe to the topic on another computer to view the output from the object detection model.
+- Also, try updating the code to give continuous inference.  Right now, it is setup to provide only one inference at start. 
 
 Step 7: Experiment with different LiteRT object detection models such as the [EfficientDet](https://www.kaggle.com/models/tensorflow/efficientdet/tfLite) 
