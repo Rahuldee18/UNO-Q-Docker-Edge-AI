@@ -64,4 +64,4 @@ Step 6:
 - Change the MQTT topic name in the application code (object-detection.py) and subscribe to the topic on another computer to view the output from the object detection model.
 - Also, try updating the code to give continuous inference.  Right now, it is setup to provide only one inference at start. 
 
-Step 7: Experiment with different LiteRT object detection models such as the [EfficientDet](https://www.kaggle.com/models/tensorflow/efficientdet/tfLite) 
+Step 7: Experiment with different LiteRT object detection models such as the [EfficientDet](https://www.kaggle.com/models/tensorflow/efficientdet/tfLite).  The output tensor of EfficientDet is setup the same way as the object detection model used in thie example. 
